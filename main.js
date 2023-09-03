@@ -8,50 +8,43 @@ class ProductManager {
 
   addProducts(title, description, price, thumbnail, code, stock) {
     //Hacer obligatorios todos los campos
-    if (
-      !title ||
-      !description ||
-      !price ||
-      !thumbnail ||
-      !code ||
-      !stock === undefined
-    ) {
-      console.log("Todos los campos son obligatorios.");
-      return;
+
+    if (title && description && price && thumbnail && code && stock) {
+      //Validar que code sea único
+
+      if (this.products.some((e) => e.code === code)) {
+        console.log("Ya existe un producto con ese código.");
+        return;
+      }
+
+      //Identificador incrementable
+
+      const idUnico = this.products.length
+        ? this.products[this.products.length - 1].id + 1
+        : 1;
+
+      const product = {
+        id: idUnico,
+        title,
+        description,
+        price,
+        thumbnail,
+        code,
+        stock,
+      };
+
+      //Cargar producto al array
+
+      this.products.push(product);
     }
-
-    //Validar que code sea único
-
-    if (this.products.some((e) => e.code === code)) {
-      console.log("Ya existe un producto con ese código.");
-      return;
-    }
-
-    //Identificador incrementable
-
-    const idUnico = this.products.length
-      ? this.products[this.products.length - 1].id + 1
-      : 1;
-
-    const product = {
-      id: idUnico,
-      title,
-      description,
-      price,
-      thumbnail,
-      code,
-      stock,
-    };
-
-    //Cargar producto al array
-
-    this.products.push(product);
+    console.log("Todos los campos son obligatorios.");
+    return;
   }
 
   //Crear método getProducts que retorna array con productos
 
   getProducts() {
-    console.log(this.products);
+    return this.products;
   }
 
   //Crear método getProductById que busca producto por id
@@ -107,6 +100,34 @@ productManager.addProducts(
 
 // //Llamamos método getProducts
 const todosLosProductos = productManager.getProducts();
+console.log(todosLosProductos);
 
 //Llamamos al método getProductById
 console.log(productManager.getProductById(1));
+
+//Forzamos errores
+console.log("------------ERRORES--------------");
+//Id que no existe - Return esperado: "Not found"
+console.log(productManager.getProductById(10));
+
+//Addproduct con menos parámetros - Return esperado: "Todos los campos son obligatorios."
+productManager.addProducts(
+  "Producto falla",
+  "este va a fallar",
+  400,
+  "no hay imagen",
+  "dadasda"
+);
+
+//Addproduct con código que ya existe - Return esperado: "Ya existe un producto con ese código."
+productManager.addProducts(
+  "producto 4",
+  "este es otro producto",
+  500,
+  "sin imagen tambien",
+  "aea143",
+  40
+);
+
+//Valido que no se hayan guardado:
+console.log(productManager.getProducts());
