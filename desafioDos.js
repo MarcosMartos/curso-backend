@@ -23,15 +23,47 @@ class ProductManager {
   // Crear método addProduct
   async addProduct(obj) {
     try {
-      const products = await this.getProducts();
-      let id;
-      if (!products.length) {
-        id = 1;
+      if (
+        obj.title &&
+        obj.description &&
+        obj.price &&
+        obj.thumbnail &&
+        obj.code &&
+        obj.stock
+      ) {
+        // Llamar productos
+
+        const products = await this.getProducts();
+        let id;
+
+        if (products.length) {
+          // Verificar que code sea único
+
+          if (products.some((p) => p.code === obj.code)) {
+            console.log("Ya existe un producto con este Codigo");
+          } else {
+            //Id único
+
+            id = products[products.length - 1].id + 1;
+
+            //Cargar producto al array
+
+            products.push({ id, ...obj });
+            await fs.promises.writeFile(this.path, JSON.stringify(products));
+          }
+        } else {
+          //Id único
+
+          id = 1;
+
+          //Cargar producto al array
+
+          products.push({ id, ...obj });
+          await fs.promises.writeFile(this.path, JSON.stringify(products));
+        }
       } else {
-        id = products[products.length - 1].id + 1;
+        console.log("Todos los campos son obligatorios");
       }
-      products.push({ id, ...obj });
-      await fs.promises.writeFile(this.path, JSON.stringify(products));
     } catch (error) {
       return error;
     }
@@ -64,13 +96,23 @@ class ProductManager {
   }
 
   // Crear método updateProduct
+
   async updateProduct(idProduct, obj) {
     try {
       let products = await this.getProducts();
-      let product = products.findIndex((p) => p.id === idProduct);
+      let index = products.findIndex((p) => p.id === idProduct);
+      let product = products.find((p) => p.id === idProduct);
       if (product !== -1) {
-        obj.id = idProduct;
-        products[product] = obj;
+        product = {
+          id: idProduct,
+          title: obj.title ? obj.title : product.title,
+          description: obj.description ? obj.description : product.description,
+          price: obj.price ? obj.price : product.price,
+          thumbnail: obj.thumbnail ? obj.thumbnail : product.thumbnail,
+          code: obj.code ? obj.code : product.code,
+          stock: obj.stock ? obj.stock : product.stock,
+        };
+        products[index] = product;
         await fs.promises.writeFile(this.path, JSON.stringify(products));
       } else {
         return "No se encontro el producto";
@@ -82,6 +124,8 @@ class ProductManager {
 }
 
 //************************************TESTING********************************* */
+
+//Pruebas
 
 //Productos
 
@@ -121,6 +165,14 @@ const elemento4 = {
   stock: 25,
 };
 
+const elemento5 = {
+  title: "producto 5",
+  description: "este es un producto prueba 5",
+  price: 500,
+  thumbnail: "sin imagen",
+  code: "cnn777",
+};
+
 const objeto = {
   title: "objeto",
   description: "este es un objeto",
@@ -130,27 +182,25 @@ const objeto = {
   stock: 5,
 };
 
-//Pruebas
-
 async function test() {
   //Crear instancia
-  const producto1 = new ProductManager("Products.json");
+  const productManager = new ProductManager("Products.json");
 
   // Crear productos
-  //   await producto1.addProduct(elemento4);
+  await productManager.addProduct(elemento4);
 
   // Mostrar productos
-  //   const products = await producto1.getProducts();
-  //   console.log(products);
+  // const products = await productManager.getProducts();
+  // console.log(products);
 
   // Mostrar producto por ID
-  //   const product = await producto1.getProductById(2);
+  //   const product = await productManager.getProductById(2);
 
   // Borrar producto
-  //   const product = await producto1.deleteProduct(3);
+  //   const product = await productManager.deleteProduct(3);
 
   // Actualizar producto
-  //   const product = await producto1.updateProduct(1, objeto);
+  //   const product = await productManager.updateProduct(1, objeto);
   //   console.log(product);
 }
 
