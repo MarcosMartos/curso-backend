@@ -7,11 +7,18 @@ class ProductManager {
   }
 
   // Crear método getProducts
-  async getProducts() {
+  async getProducts(queryObj) {
+    const { order } = queryObj;
     try {
       if (fs.existsSync(this.path)) {
         const info = await fs.promises.readFile(this.path, "utf-8");
-        return JSON.parse(info);
+        const infoParsed = JSON.parse(info);
+
+        return order === "ASC"
+          ? infoParsed.sort((a, b) => a.title.localeCompare(b.title))
+          : order === "DESC"
+          ? infoParsed.sort((a, b) => b.title.localeCompare(a.title))
+          : infoParsed;
       } else {
         return [];
       }
@@ -48,8 +55,10 @@ class ProductManager {
 
             //Cargar producto al array
 
-            products.push({ id, ...obj });
+            const newProduct = { id, ...obj };
+            products.push(newProduct);
             await fs.promises.writeFile(this.path, JSON.stringify(products));
+            return newProduct;
           }
         } else {
           //Id único
@@ -58,8 +67,10 @@ class ProductManager {
 
           //Cargar producto al array
 
-          products.push({ id, ...obj });
+          const newProduct = { id, ...obj };
+          products.push(newProduct);
           await fs.promises.writeFile(this.path, JSON.stringify(products));
+          return newProduct;
         }
       } else {
         console.log("Todos los campos son obligatorios");
@@ -74,11 +85,7 @@ class ProductManager {
     try {
       const products = await this.getProducts();
       const product = products.find((p) => p.id === idProduct);
-      if (product) {
-        return product;
-      } else {
-        return "Producto no existe";
-      }
+      return product;
     } catch (error) {
       return error;
     }
@@ -87,9 +94,15 @@ class ProductManager {
   // Crear método deleteProduct
   async deleteProduct(idProduct) {
     try {
-      const products = await this.getProducts();
+      const product = products.find((p) => p.id === idProduct);
+      if (!product) {
+        return -1;
+      }
+
+      const products = await this.getProducts({});
       const newArrayProducts = products.filter((p) => p.id !== idProduct);
       await fs.promises.writeFile(this.path, JSON.stringify(newArrayProducts));
+      return 1;
     } catch (error) {
       return error;
     }
@@ -101,6 +114,11 @@ class ProductManager {
     try {
       let products = await this.getProducts();
       let index = products.findIndex((p) => p.id === idProduct);
+
+      if (index === -1) {
+        return -1;
+      }
+
       let product = products.find((p) => p.id === idProduct);
       if (product !== -1) {
         product = {
@@ -114,6 +132,7 @@ class ProductManager {
         };
         products[index] = product;
         await fs.promises.writeFile(this.path, JSON.stringify(products));
+        return 1;
       } else {
         return "No se encontro el producto";
       }
@@ -126,10 +145,3 @@ class ProductManager {
 //************************************DESAFIO TRES********************************* */
 
 export const productsManager = new ProductManager("Products.json");
-
-// async function test() {
-//   //Crear instancia
-//   const productManager = new ProductManager("Products.json");
-// }
-
-// test();

@@ -171,6 +171,7 @@ const elemento5 = {
   price: 500,
   thumbnail: "sin imagen",
   code: "cnn777",
+  stock: 25,
 };
 
 const objeto = {
