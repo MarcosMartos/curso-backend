@@ -28,7 +28,7 @@ app.get("/products", async (req, res) => {
 app.get("/products/:idProduct", async (req, res) => {
   const { idProduct } = req.params;
   try {
-    const product = await productsManager.getProductById(+idProduct);
+    const product = await productsManager.getProductById(parseInt(idProduct));
     if (!product) {
       res.status(400).json({ menssage: "Product not found with the id sent" });
     } else {

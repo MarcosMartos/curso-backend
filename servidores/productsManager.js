@@ -8,17 +8,24 @@ class ProductManager {
 
   // Crear método getProducts
   async getProducts(queryObj) {
-    const { order } = queryObj;
+    const { limit } = queryObj;
     try {
       if (fs.existsSync(this.path)) {
         const info = await fs.promises.readFile(this.path, "utf-8");
         const infoParsed = JSON.parse(info);
 
-        return order === "ASC"
-          ? infoParsed.sort((a, b) => a.title.localeCompare(b.title))
-          : order === "DESC"
-          ? infoParsed.sort((a, b) => b.title.localeCompare(a.title))
-          : infoParsed;
+        // Comprobar si existe limit y si es menor a los productos del array
+
+        if (limit) {
+          if (limit > infoParsed.length) {
+            return -1;
+          } else {
+            const newProducts = infoParsed.splice(0, limit);
+            return newProducts;
+          }
+        } else {
+          return infoParsed;
+        }
       } else {
         return [];
       }
@@ -83,7 +90,7 @@ class ProductManager {
   // Crear método getProductById
   async getProductById(idProduct) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getProducts({});
       const product = products.find((p) => p.id === idProduct);
       return product;
     } catch (error) {
