@@ -47,7 +47,7 @@ class ProductManager {
       ) {
         // Llamar productos
 
-        const products = await this.getProducts();
+        const products = await this.getProducts({});
         let id;
 
         if (products.length) {
@@ -101,12 +101,12 @@ class ProductManager {
   // Crear método deleteProduct
   async deleteProduct(idProduct) {
     try {
+      const products = await this.getProducts({});
       const product = products.find((p) => p.id === idProduct);
       if (!product) {
         return -1;
       }
 
-      const products = await this.getProducts({});
       const newArrayProducts = products.filter((p) => p.id !== idProduct);
       await fs.promises.writeFile(this.path, JSON.stringify(newArrayProducts));
       return 1;
@@ -119,7 +119,7 @@ class ProductManager {
 
   async updateProduct(idProduct, obj) {
     try {
-      let products = await this.getProducts();
+      let products = await this.getProducts({});
       let index = products.findIndex((p) => p.id === idProduct);
 
       if (index === -1) {
