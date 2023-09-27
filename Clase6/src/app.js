@@ -25,3 +25,12 @@ const httpServer = app.listen(PORT, () => {
 
 // websocket - server
 const socketServer = new Server(httpServer);
+
+// Connection - Disconnect
+
+socketServer.on("connection", (socket) => {
+  console.log(`Cliente conectado: ${socket.id}`);
+  socket.on("disconnect", () => {
+    console.log(`Cliente desconectado: ${socket.id}`);
+  });
+});
