@@ -28,9 +28,22 @@ const socketServer = new Server(httpServer);
 
 // Connection - Disconnect
 
+// socketServer.on("connection", (socket) => {
+//   console.log(`Cliente conectado: ${socket.id}`);
+//   socket.on("disconnect", () => {
+//     console.log(`Cliente desconectado: ${socket.id}`);
+//   });
+// });
+
+const messages = [];
+
 socketServer.on("connection", (socket) => {
-  console.log(`Cliente conectado: ${socket.id}`);
-  socket.on("disconnect", () => {
-    console.log(`Cliente desconectado: ${socket.id}`);
+  socket.on("newUser", (user) => {
+    socket.broadcast.emit("newUserBroadcast", user);
+  });
+
+  socket.on("message", (info) => {
+    messages.push(info);
+    socketServer.emit("chat", messages);
   });
 });
