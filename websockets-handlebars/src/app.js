@@ -1,9 +1,9 @@
 import express from "express";
 import handlebars from "express-handlebars";
-import { __dirname } from "./utils";
+import { __dirname } from "./utils.js";
 import { Server } from "socket.io";
 import viewsRouter from "./routes/views.router.js";
-import { productsManager } from "./productsManager.js";
+import { productsManager } from "./products.manager.js";
 
 // Levantar servidor
 const app = express();
@@ -30,5 +30,12 @@ socketServer.on("connection", (socket) => {
   socket.on("createProduct", async (product) => {
     const newProduct = await productsManager.createProduct(product);
     socket.emit("productCreated", newProduct);
+    console.log(newProduct);
+  });
+
+  socket.on("deleteProduct", async (idProduct) => {
+    const products = await productsManager.getProducts();
+    const newProducts = products.filter((p) => p.id !== idProduct);
+    socket.emit("productDeleted", newProducts);
   });
 });

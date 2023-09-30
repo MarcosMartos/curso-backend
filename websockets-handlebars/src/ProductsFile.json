@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Computadora",
+    "description": "Buenísima, en serio",
+    "price": "24000",
+    "status": true
+  },
+  {
+    "id": 2,
+    "title": "Teclado",
+    "description": "Acorde a la compu",
+    "price": "5000",
+    "status": true
+  },
+  {
+    "id": 3,
+    "title": "Pantalla",
+    "description": "Se ve manso",
+    "price": "15000",
+    "status": true
+  },
+  {
+    "id": 4,
+    "title": "Bicicleta",
+    "description": "Para no morir de sedentarismo",
+    "price": "5",
+    "status": true
+  },
+  {
+    "id": 5,
+    "title": "Mouse",
+    "description": "Periferico",
+    "price": "500",
+    "status": true
+  }
+]

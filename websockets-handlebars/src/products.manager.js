@@ -3,13 +3,14 @@ import { __dirname } from "./utils.js";
 const path = __dirname + "/ProductsFile.json";
 
 class ProductsManager {
+  // Traer productos
   async getProducts(queryObj = {}) {
     const { limit } = queryObj;
 
     try {
       if (existsSync(path)) {
         const productsFile = await promises.readFile(path, "utf-8");
-        console.log("productsFile", productsFile);
+        // console.log("productsFile", productsFile);
         const productsData = JSON.parse(productsFile);
         return limit ? productsData.slice(0, +limit) : productsData;
       } else {
@@ -22,6 +23,7 @@ class ProductsManager {
     }
   }
 
+  // Crear producto
   async createProduct(product) {
     try {
       const products = await this.getProducts({});
@@ -40,6 +42,7 @@ class ProductsManager {
     }
   }
 
+  // Traer producto por id
   async getProductById(id) {
     try {
       const products = await this.getProducts();
@@ -53,6 +56,7 @@ class ProductsManager {
     }
   }
 
+  // Eliminar producto
   async deleteProduct(id) {
     try {
       const products = await this.getProducts({});
@@ -67,6 +71,7 @@ class ProductsManager {
     }
   }
 
+  // Actualizar producto
   async updateProduct(id, obj) {
     try {
       const products = await this.getProducts({});
