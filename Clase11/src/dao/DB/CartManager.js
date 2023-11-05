@@ -29,7 +29,7 @@ class CartManager extends Manager {
 
       await foundCart.save();
 
-      return "Product added";
+      return "Producto agregado";
     } catch (error) {
       throw error;
     }
@@ -43,7 +43,7 @@ class CartManager extends Manager {
         await this.deleteProductFromCart(cart._id, productId);
       });
 
-      return "Product deleted";
+      return "Producto eliminado";
     } catch (error) {
       throw error;
     }
@@ -54,7 +54,7 @@ class CartManager extends Manager {
       const foundCart = await this.model.findById(cartId);
 
       if (!foundCart) {
-        throw new Error("Cart not found");
+        throw new Error("Carrito no funciona");
       }
 
       foundCart.products = foundCart.products.filter(
@@ -63,7 +63,7 @@ class CartManager extends Manager {
 
       await foundCart.save();
 
-      return "Product deleted";
+      return "Producto eliminado";
     } catch (error) {
       throw error;
     }
@@ -74,14 +74,14 @@ class CartManager extends Manager {
       const foundCart = await this.model.findById(cartId);
 
       if (!foundCart) {
-        throw new Error("Cart not found");
+        throw new Error("Carrito no funciona");
       }
 
       foundCart.products = [];
 
       await foundCart.save();
 
-      return "Products deleted";
+      return "Producto eliminado";
     } catch (error) {
       throw error;
     }
@@ -103,7 +103,7 @@ class CartManager extends Manager {
       const foundCart = await this.model.findById(cartId);
 
       if (!foundCart) {
-        throw new Error("Cart not found");
+        throw new Error("Carrito no funciona");
       }
 
       const foundProduct = foundCart.products.find(
@@ -113,12 +113,12 @@ class CartManager extends Manager {
       if (foundProduct) {
         foundProduct.quantity = quantity;
       } else {
-        throw new Error("Product not found");
+        throw new Error("Producto no funciona");
       }
 
       await foundCart.save();
 
-      return "Product updated";
+      return "Producto actualizado";
     } catch (error) {
       throw error;
     }

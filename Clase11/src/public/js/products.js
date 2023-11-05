@@ -77,7 +77,7 @@ function compileProducts() {
       <p>Title: ${product.title}</p> 
       <p>Price: ${product.price}</p>
     </li>
-    <button type="submit"><a href="http://localhost:8080/products/${product._id}">See details</a></button>
+    <button type="submit"><a href="http://localhost:8080/products/${product._id}">Ver detalles</a></button>
     `
     )
     .join(" ");

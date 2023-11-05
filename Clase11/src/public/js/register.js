@@ -41,6 +41,6 @@ function validateUserForm(newUser) {
     !newUser.last_name ||
     !newUser.age
   ) {
-    throw new Error("Form incomplete");
+    throw new Error("Formulario incompleto");
   }
 }

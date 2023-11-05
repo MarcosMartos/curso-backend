@@ -11,7 +11,7 @@ class UserManager extends Manager {
       const foundUser = await this.getByFilter({ email: object.email });
 
       if (foundUser) {
-        throw new Error("User already exists");
+        throw new Error("El usuario ya existe");
       }
 
       return super.create(object);

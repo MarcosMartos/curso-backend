@@ -15,7 +15,7 @@ async function deleteUser(req, res, next) {
 
       await cartManager.deleteById(foundCart._id);
 
-      res.status(200).json({ message: "User deleted successfully" });
+      res.status(200).json({ message: "Usiario eliminado satisfactoriamente" });
     });
   } catch (error) {
     next(error);

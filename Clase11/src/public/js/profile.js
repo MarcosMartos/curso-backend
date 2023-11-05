@@ -72,7 +72,7 @@ async function updateUser(newData) {
     const resultJson = await result.json();
 
     if (result) {
-      alert("User updated succesfully");
+      alert("Usuario actualizado satisfactoriamente");
     }
   } catch (err) {
     alert(`ERROR: ${err}`);
@@ -86,6 +86,6 @@ function validateUserForm(newUser) {
     newUser.age === 0 ||
     !newUser.age
   ) {
-    throw new Error("Form incomplete");
+    throw new Error("Formulario incompleto");
   }
 }
