@@ -1,0 +1,20 @@
+{
+  message: "Failed to connect to database:  Access denied for user 'marcosmartos'@'localhost' (using password: YES)",
+  level: 'fatal',
+  timestamp: '2023-12-23T21:29:52.616Z'
+}
+{
+  message: "Failed to connect to database:  Access denied for user 'marcosmartos'@'localhost' (using password: YES)",
+  level: 'fatal',
+  timestamp: '2023-12-23T21:31:06.535Z'
+}
+{
+  message: "Failed to connect to database:  Access denied for user 'marcosmartos'@'localhost' (using password: YES)",
+  level: 'fatal',
+  timestamp: '2023-12-23T21:33:22.909Z'
+}
+{
+  message: "Failed to connect to database:  Unknown database 'cursobackend'",
+  level: 'fatal',
+  timestamp: '2023-12-23T21:34:23.970Z'
+}

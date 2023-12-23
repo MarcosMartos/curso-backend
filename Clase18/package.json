@@ -2,6 +2,7 @@
   "name": "clase18",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js",
@@ -12,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
+    "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "cloudinary": "^1.41.1",
     "connect-mongo": "^5.1.0",
@@ -24,6 +26,7 @@
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.5",
     "nodemailer": "^6.9.7",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
