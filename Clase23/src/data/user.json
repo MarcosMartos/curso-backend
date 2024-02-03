@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "31efcbaf-2c05-5dc9-b5d7-8ed71586b395",
+    "email": "demo@mail.com",
+    "username": "alguien",
+    "password": "asdasd123",
+    "confirmed": true,
+    "phone": 111111111,
+    "timestamp": 1682782358624
+  },
+  {
+    "username": "nico",
+    "phone": 111111111,
+    "email": "demo2@mail.com",
+    "password": "asdasd1236",
+    "timestamp": 1683234551988,
+    "token": "3cf582d7-76fc-5987-be77-d5c6bcf2dc7c",
+    "confirmed": true,
+    "id": "cf756459-9cgb-5083-bde6-b9725805e771",
+    "_id": "cf756459-9cgb-5083-bde6-b9725805e771"
+  }
+]

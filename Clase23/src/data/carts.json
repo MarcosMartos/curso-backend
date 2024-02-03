@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "31efcbaf-2c05-5dc9-b5d7-8ed71586b395",
+    "products": [
+      { "_id": 3, "quantity": 2 },
+      { "_id": 2, "quantity": 1 },
+      { "_id": 1, "quantity": 3 }
+    ],
+    "userId": "31efcbaf-2c05-5dc9-b5d7-8ed71586b395",
+    "timestamp": 1682659030661
+  }
+]

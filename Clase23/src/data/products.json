@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "1",
+    "title": "Montañas del Himalaya",
+    "price": 359,
+    "description": "Las montañas del Himalaya son una maravilla natural que ofrece paisajes impresionantes y aventuras inolvidables.",
+    "url": "paisaje_01_himalaya",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "2",
+    "title": "Bosques de Secuoyas",
+    "price": 359,
+    "description": "Los bosques de secuoyas en California son hogar de algunos de los árboles más altos del mundo.",
+    "url": "paisaje_02_secuoyas",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "3",
+    "title": "Desierto del Sahara",
+    "price": 359,
+    "description": "El desierto del Sahara es el desierto cálido más grande del mundo y ofrece vistas espectaculares.",
+    "url": "paisaje_03_sahara",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "4",
+    "title": "Cataratas del Niágara",
+    "price": 359,
+    "description": "Las Cataratas del Niágara son una de las maravillas naturales más impresionantes del mundo.",
+    "url": "paisaje_04_niagara",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "5",
+    "title": "Gran Cañón",
+    "price": 359,
+    "description": "El Gran Cañón en Arizona es una de las formaciones geológicas más impresionantes del planeta.",
+    "url": "paisaje_05_canon",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "6",
+    "title": "Selva Amazónica",
+    "price": 359,
+    "description": "La selva amazónica es el pulmón del mundo y hogar de una biodiversidad inigualable.",
+    "url": "paisaje_06_amazonas",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "7",
+    "title": "Playas de Maldivas",
+    "price": 359,
+    "description": "Las playas de Maldivas son conocidas por sus aguas cristalinas y arenas blancas.",
+    "url": "paisaje_07_maldivas",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "8",
+    "title": "Auroras Boreales",
+    "price": 359,
+    "description": "Las auroras boreales son un fenómeno natural que ilumina el cielo nocturno en las regiones polares.",
+    "url": "paisaje_08_auroras",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "9",
+    "title": "Volcanes de Islandia",
+    "price": 359,
+    "description": "Islandia es conocida por su actividad geotérmica y sus impresionantes volcanes.",
+    "url": "paisaje_09_islandia",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "10",
+    "title": "Arrecifes de Coral",
+    "price": 359,
+    "description": "Los arrecifes de coral son ecosistemas marinos vibrantes y llenos de vida.",
+    "url": "paisaje_10_arrecifes",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "11",
+    "title": "Dunas de Namibia",
+    "price": 359,
+    "description": "Las dunas de Namibia ofrecen un paisaje desértico único y cautivador.",
+    "url": "paisaje_11_namibia",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  },
+  {
+    "_id": "12",
+    "title": "Lagos de Canadá",
+    "price": 359,
+    "description": "Canadá es hogar de algunos de los lagos más hermosos y prístinos del mundo.",
+    "url": "paisaje_12_canada",
+    "stock": 8,
+    "category": "paisajes",
+    "timestamp": 1680285084762
+  }
+]
